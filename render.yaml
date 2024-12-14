@@ -3,8 +3,8 @@ services:
   name: line-bot-python-flask
   env: python
   repo: https://github.com/line/line-bot-sdk-python.git
-  buildCommand: cd /line-bot/bot-411023057/app.py; pip install gunicorn -r requirements.txt
-  startCommand: cd /line-bot/bot-411023057/app.py; gunicorn app:app
+  buildCommand: cd line-bot; pip install gunicorn -r requirements.txt
+  startCommand: cd line-bot; gunicorn app:app
   plan: free
   autoDeploy: false
   envVars:
