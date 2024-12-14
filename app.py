@@ -3,22 +3,27 @@
 #載入LineBot所需要的套件
 from flask import Flask, request, abort
 
-from linebot import (
-    LineBotApi, WebhookHandler
+from linebot.v3 import (
+    WebhookHandler
 )
-from linebot.exceptions import (
+from linebot.v3.exceptions import (
     InvalidSignatureError
 )
-from linebot.models import *
-import re
+from linebot.v3.messaging import (
+    Configuration,
+    ApiClient,
+    MessagingApi,
+    ReplyMessageRequest,
+    TextMessage
+)
+from linebot.v3.webhooks import (
+    MessageEvent,
+    TextMessageContent
+)
+
 app = Flask(__name__)
-
-# 必須放上自己的Channel Access Token
-line_bot_api = LineBotApi('uCsEQcK8/n0y6Ry7nNYY2LTMIWRlKRP5Pc5skuVxHUK0kGHPdeMJOGKu6yDC++Mcf0ECgMF2F4mbuFI09sUWo75OU0QFVGNDohhmmY2mQIMizGkTLEkU5gUvWABAdBy0VQjZLQFDCZQ6wrCgfP5fgQdB04t89/1O/w1cDnyilFU=')
-# 必須放上自己的Channel Secret
-handler = WebhookHandler('0b346da981e91dd30f384a1d8cd46b39')
-
-line_bot_api.push_message('Uc9bf2374d88a474691d2827c396900f0', TextSendMessage(text='你可以開始了'))
+configuration = Configuration(access_token='9yw71ZXTKe9+K5yIzg/xTUYy05qa/CgcTDbGWmPoORR5vMMd243F3Zmdpps6K0EehZ5+daHPeWkc77nq5uRoQ2LJRX2aAoWnwo+5pM6hymvUcLGBk3UhSMdPkHSoau6fxR5wxiKpG9RpnSFhhPTLqQdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('1c1e2852ed77d82ca01a95e907d95ff6')
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -34,26 +39,24 @@ def callback():
     try:
         handler.handle(body, signature)
     except InvalidSignatureError:
+        app.logger.info("Invalid signature. Please check your channel access token/channel secret.")
         abort(400)
 
     return 'OK'
 
-#訊息傳遞區塊
-##### 基本上程式編輯都在這個function #####
-@handler.add(MessageEvent, message=TextMessage)
+
+@handler.add(MessageEvent, message=TextMessageContent)
 def handle_message(event):
-    message = text=event.message.text
-    if re.match('告訴我秘密',message):
-        location_message = LocationSendMessage(
-            title='台中市政府',
-            address='台中',
-            latitude=24.162243302373087,
-            longitude=120.64688666952166
+    print(event)
+    with ApiClient(configuration) as api_client:
+        line_bot_api = MessagingApi(api_client)
+        line_bot_api.reply_message_with_http_info(
+            ReplyMessageRequest(
+                reply_token=event.reply_token,
+                messages=[TextMessage(text=event.message.text)]
+            )
         )
-        line_bot_api.reply_message(event.reply_token, location_message)
-    else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(message))
-#主程式
+
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
