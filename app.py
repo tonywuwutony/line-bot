@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 #載入LineBot所需要的套件
-import re
 from flask import Flask, request, abort
+import os
 
 from linebot.v3 import (
     WebhookHandler
@@ -12,20 +12,35 @@ from linebot.v3.exceptions import (
 )
 from linebot.v3.messaging import (
     Configuration,
+    ImagemapArea,
+    ApiClient,
+    CarouselTemplateColumn,
+    ImageCarouselTemplateColumn,
+    URIImagemapAction,
+    ImagemapBaseSize,
     ApiClient,
     MessagingApi,
     ReplyMessageRequest,
     TextMessage,
+    TemplateMessage,
+    CarouselTemplate,
     ImagemapMessage,
-    ImagemapBaseSize,
-    URIImagemapAction,
-    ImagemapArea
+    ConfirmTemplate,
+    QuickReply,
+    QuickReplyItem,
+    URIAction,
+    PostbackAction,
+    MessageAction,
+    ImageCarouselTemplate,
+
+    FlexMessage,
+    FlexContainer
 )
 from linebot.v3.webhooks import (
     MessageEvent,
-    TextMessageContent
+    TextMessageContent,
+    PostbackEvent
 )
-
 app = Flask(__name__)
 configuration = Configuration(access_token='9yw71ZXTKe9+K5yIzg/xTUYy05qa/CgcTDbGWmPoORR5vMMd243F3Zmdpps6K0EehZ5+daHPeWkc77nq5uRoQ2LJRX2aAoWnwo+5pM6hymvUcLGBk3UhSMdPkHSoau6fxR5wxiKpG9RpnSFhhPTLqQdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('1c1e2852ed77d82ca01a95e907d95ff6')
@@ -129,6 +144,249 @@ def handle_message(event):
                     messages=[TextMessage(text=event.message.text)]
                 )
             )
+        if text == '推薦景點':
+
+            carousel_template_columns = [
+                CarouselTemplateColumn(
+                    title='台北101',
+                    text='台北市最著名的地標',
+                    actions=[
+                        URIAction(
+                            label='查看詳情',
+                            uri='https://www.taipei-101.com.tw/tw/'
+                        )
+                    ]
+                ),
+                CarouselTemplateColumn(
+                    title='故宮博物院',
+                    text='收藏中國古代文物的博物館',
+                    actions=[
+                        URIAction(
+                            label='官方網站',
+                            uri='https://www.npm.gov.tw/'
+                        )
+                    ]
+                ),
+                CarouselTemplateColumn(
+                    title='九份老街',
+                    text='懷舊的山城小鎮',
+                    actions=[
+                        URIAction(
+                            label='景點介紹',
+                            uri='https://taiwan.net.tw/m/Attractions/Taiwan_A01_01.aspx'
+                        )
+                    ]
+                )
+            ]
+
+            carousel_template = CarouselTemplate(columns=carousel_template_columns)
+            template_message = TemplateMessage(
+                alt_text='景點推薦',
+                template=carousel_template
+            )
+            
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[template_message]
+                )
+            )
+        
+        # 3. 訂餐流程
+        elif text == '我要訂餐':
+            order_text = '無敵好吃牛肉麵 * 1 ，總價NT200'
+            confirm_template = ConfirmTemplate(
+                text=order_text,
+                actions=[
+                    MessageAction(label='確定', text='確認訂單'),
+                    MessageAction(label='取消', text='取消訂單')
+                ]
+            )
+            template_message = TemplateMessage(
+                alt_text='訂單確認',
+                template=confirm_template
+            )
+            
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[
+                        TextMessage(text=order_text),
+                        template_message
+                    ]
+                )
+            )
+        
+        # 4. 快速回覆選單 
+        elif text == '我想吃飯':
+            quick_reply = QuickReply(
+                items=[
+                    QuickReplyItem(
+                        action=MessageAction(label='主菜', text='選擇主菜')
+                    ),
+                    QuickReplyItem(
+                        action=MessageAction(label='湯品', text='選擇湯品')
+                    ),
+                    QuickReplyItem(
+                        action=MessageAction(label='飲料', text='選擇飲料')
+                    )
+                ]
+            )
+            
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[
+                        TextMessage(
+                            text='請選擇您想要的種類', 
+                            quick_reply=quick_reply
+                        )
+                    ]
+                )
+            )
+
+        # 5. 電影推薦 ImageCarouselTemplate
+        elif text == '電影推薦':
+            image_carousel_columns = [
+                ImageCarouselTemplateColumn(
+                    image_url='https://example.com/movie1.jpg',
+                    action=URIAction(
+                        label='查看詳情',
+                        uri='https://example.com/movie1'
+                    )
+                ),
+                ImageCarouselTemplateColumn(
+                    image_url='https://example.com/movie2.jpg',
+                    action=URIAction(
+                        label='查看預告',
+                        uri='https://example.com/movie2-trailer'
+                    )
+                ),
+                ImageCarouselTemplateColumn(
+                    image_url='https://example.com/movie3.jpg',
+                    action=URIAction(
+                        label='立即購票',
+                        uri='https://example.com/movie3-ticket'
+                    )
+                ),
+                ImageCarouselTemplateColumn(
+                    image_url='https://example.com/movie4.jpg',
+                    action=URIAction(
+                        label='線上觀看',
+                        uri='https://example.com/movie4-watch'
+                    )
+                )
+            ]
+
+            image_carousel_template = ImageCarouselTemplate(columns=image_carousel_columns)
+            template_message = TemplateMessage(
+                alt_text='電影推薦',
+                template=image_carousel_template
+            )
+            
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[template_message]
+                )
+            )
+        
+        # 6. 餐廳菜單 FlexMessage
+        elif text == '查看菜單':
+            menu_flex = {
+                "type": "carousel",
+                "contents": [
+                    {
+                        "type": "bubble",
+                        "body": {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                                {
+                                    "type": "image",
+                                    "url": "https://example.com/dish1.jpg",
+                                    "size": "full",
+                                    "aspectMode": "cover"
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "香煎鮭魚",
+                                    "weight": "bold",
+                                    "size": "xl"
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "新鮮鮭魚佐檸檬醬汁",
+                                    "color": "#aaaaaa"
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "NT$280",
+                                    "color": "#ff0000"
+                                }
+                            ]
+                        },
+                        "footer": {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                                {
+                                    "type": "button",
+                                    "action": {
+                                        "type": "message",
+                                        "label": "訂購",
+                                        "text": "加入購物車：香煎鮭魚"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                    # 可以添加更多菜品
+                ]
+            }
+
+            flex_message = FlexMessage(
+                alt_text='餐廳菜單',
+                contents=FlexContainer.from_json(menu_flex)
+            )
+            
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[flex_message]
+                )
+            )
+        
+        # 對於其他訊息
+        else:
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(text=event.message.text)]
+                )
+            )
+
+# 處理訂單確認和取消的 Postback 事件
+@handler.add(PostbackEvent)
+def handle_postback(event):
+    with ApiClient(configuration) as api_client:
+        line_bot_api = MessagingApi(api_client)
+        
+        if event.postback.data == '確認訂單':
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(text='訂單已確認，謝謝您的購買！')]
+                )
+            )
+        elif event.postback.data == '取消訂單':
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(text='已取消訂單，謝謝您的光臨！')]
+                )
+            )
+
 
 import os
 if __name__ == "__main__":
