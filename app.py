@@ -154,13 +154,13 @@ def handle_message(event):
             quick_reply = QuickReply(
                 items=[
                     QuickReplyItem(
-                        action=MessageAction(label='主菜', text='主菜')
+                        action=MessageAction(label='主菜', text='選擇主菜')
                     ),
                     QuickReplyItem(
-                        action=MessageAction(label='湯品', text='湯品')
+                        action=MessageAction(label='湯品', text='選擇湯品')
                     ),
                     QuickReplyItem(
-                        action=MessageAction(label='飲料', text='飲料')
+                        action=MessageAction(label='飲料', text='選擇飲料')
                     )
                 ]
             )
@@ -172,19 +172,6 @@ def handle_message(event):
                         TextMessage(
                             text='請選擇您想要的種類', 
                             quick_reply=quick_reply
-                        )
-                    ]
-                )
-            )
-        elif text in ['主菜', '湯品', '飲料']:
-            # 處理用戶選擇
-
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    replyToken=event.replyToken,
-                    messages=[
-                        TextMessage(
-                            text=f"您已成功將【{text}】加入購物車"
                         )
                     ]
                 )
