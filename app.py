@@ -150,17 +150,16 @@ def handle_message(event):
                     ]
                 )
             )
-        elif text == '我想吃飯':
             quick_reply = QuickReply(
                 items=[
                     QuickReplyItem(
-                        action=MessageAction(label='主菜', text='您已成功將【主菜】加入購物車')
+                        action=MessageAction(label='主菜', text='選擇主菜')
                     ),
                     QuickReplyItem(
-                        action=MessageAction(label='湯品', text='您已成功將【湯品】加入購物車')
+                        action=MessageAction(label='湯品', text='選擇湯品')
                     ),
                     QuickReplyItem(
-                        action=MessageAction(label='飲料', text='您已成功將【飲料】加入購物車')
+                        action=MessageAction(label='飲料', text='選擇飲料')
                     )
                 ]
             )
@@ -170,11 +169,13 @@ def handle_message(event):
                     reply_token=event.reply_token,
                     messages=[
                         TextMessage(
+                            text='請選擇您想要的種類', 
                             quick_reply=quick_reply
                         )
                     ]
                 )
             )
+
         else:
             line_bot_api.reply_message(
                 ReplyMessageRequest(
