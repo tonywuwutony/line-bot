@@ -127,15 +127,8 @@ def handle_message(event):
                         messages=[TextMessage(text=f"發生錯誤：{str(e)}")]
                     )
                 )
-        else:
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=[TextMessage(text=event.message.text)]
-                )
-            )
 
-        if text == '我要訂餐':
+        elif text == '我要訂餐':
             order_text = '無敵好吃牛肉麵 * 1 ，總價NT200'
             confirm_template = ConfirmTemplate(
                 text=order_text,
@@ -147,6 +140,13 @@ def handle_message(event):
             template_message = TemplateMessage(
                 alt_text='訂單確認',
                 template=confirm_template
+            )
+        else:
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(text=event.message.text)]
+                )
             )
 """        if text == '推薦景點':
 
