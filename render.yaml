@@ -3,7 +3,7 @@ services:
   name: line-bot-python-flask
   env: python
   repo: https://github.com/tonywuwutony/line-bot.git  # 改为你自己的仓库地址
-  buildCommand: pip install -r line-bot/requirements.txt  # 确保有 requirements.txt
+  buildCommand: pip install -r requirements.txt  # 确保有 requirements.txt
   startCommand: cd line-bot && gunicorn app:app
   plan: free
   autoDeploy: false
