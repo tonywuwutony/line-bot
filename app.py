@@ -69,7 +69,7 @@ def handle_message(event):
         if text == '推薦餐廳':
             try:
                 # 構建餐廳推薦的 Imagemap
-                base_url = request.url_root + 'static/1040'
+                base_url = request.url_root + 'static/food/1040'
                 base_url = base_url.replace("http://", "https://")
                 
                 imagemap_message = ImagemapMessage(
