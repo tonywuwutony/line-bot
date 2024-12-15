@@ -134,6 +134,20 @@ def handle_message(event):
                     messages=[TextMessage(text=event.message.text)]
                 )
             )
+
+        if text == '我要訂餐':
+            order_text = '無敵好吃牛肉麵 * 1 ，總價NT200'
+            confirm_template = ConfirmTemplate(
+                text=order_text,
+                actions=[
+                    MessageAction(label='確定', text='訂單已確認，謝謝您的購買！'),
+                    MessageAction(label='取消', text='已取消訂單，謝謝您的光臨！')
+                ]
+            )
+            template_message = TemplateMessage(
+                alt_text='訂單確認',
+                template=confirm_template
+            )
 """        if text == '推薦景點':
 
             carousel_template_columns = [
