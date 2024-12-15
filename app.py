@@ -16,7 +16,7 @@ from linebot.v3.messaging import (
     ImagemapArea,
     ApiClient,
     #CarouselTemplateColumn,
-    ImageCarouselTemplateColumn,
+    #ImageCarouselTemplateColumn,
     URIImagemapAction,
     ImagemapBaseSize,
     ApiClient,
