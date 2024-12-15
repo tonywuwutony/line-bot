@@ -154,13 +154,13 @@ def handle_message(event):
             quick_reply = QuickReply(
                 items=[
                     QuickReplyItem(
-                        action=MessageAction(label='主菜', text='主菜-威靈頓牛排')
+                        action=MessageAction(label='主菜', text='您已成功將【主菜】加入購物車')
                     ),
                     QuickReplyItem(
-                        action=MessageAction(label='湯品', text='湯品-羅宋湯')
+                        action=MessageAction(label='湯品', text='您已成功將【湯品】加入購物車')
                     ),
                     QuickReplyItem(
-                        action=MessageAction(label='飲料', text='飲料-珍奶微微')
+                        action=MessageAction(label='飲料', text='您已成功將【飲料】加入購物車')
                     )
                 ]
             )
@@ -170,7 +170,6 @@ def handle_message(event):
                     reply_token=event.reply_token,
                     messages=[
                         TextMessage(
-                            text='您已成功將【選項名稱】加入購物車', 
                             quick_reply=quick_reply
                         )
                     ]
