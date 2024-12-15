@@ -176,7 +176,7 @@ def handle_message(event):
                     ]
                 )
             )
-            if text in ['主菜', '湯品', '飲料']:
+        elif text in ['主菜', '湯品', '飲料']:
             # 處理用戶選擇
                 text_mesages = TextMessage(
                     text=f"您已成功將【{text}】加入購物車"
