@@ -46,15 +46,6 @@ app = Flask(__name__)
 configuration = Configuration(access_token='9yw71ZXTKe9+K5yIzg/xTUYy05qa/CgcTDbGWmPoORR5vMMd243F3Zmdpps6K0EehZ5+daHPeWkc77nq5uRoQ2LJRX2aAoWnwo+5pM6hymvUcLGBk3UhSMdPkHSoau6fxR5wxiKpG9RpnSFhhPTLqQdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('1c1e2852ed77d82ca01a95e907d95ff6')
 
-RESTAURANT_LINKS = {
-    '日式料理': 'https://g.co/kgs/f9NsxdD',
-    '西式料理': 'https://g.co/kgs/xzzqSpz', 
-    '中式料理': 'https://g.co/kgs/ocVB9KU',
-    '法式料理': 'https://g.co/kgs/V49uMA3'
-}
-
-
-
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -93,28 +84,28 @@ def handle_message(event):
                     actions=[
                         # 日式料理區域
                         URIImagemapAction(
-                            link_uri=RESTAURANT_LINKS['日式料理'],
+                            link_uri='https://g.co/kgs/f9NsxdD',
                             area=ImagemapArea(
                                 x=0, y=0, width=520, height=520
                             )
                         ),
                         # 西式料理區域
                         URIImagemapAction(
-                            link_uri=RESTAURANT_LINKS['西式料理'],
+                            link_uri='https://g.co/kgs/xzzqSpz',
                             area=ImagemapArea(
                                 x=520, y=0, width=520, height=520
                             )
                         ),
                         # 中式料理區域
                         URIImagemapAction(
-                            link_uri=RESTAURANT_LINKS['中式料理'],
+                            link_uri='https://g.co/kgs/ocVB9KU',
                             area=ImagemapArea(
                                 x=0, y=520, width=520, height=520
                             )
                         ),
                         # 法式料理區域
                         URIImagemapAction(
-                            link_uri=RESTAURANT_LINKS['法式料理'],
+                            link_uri='https://g.co/kgs/V49uMA3',
                             area=ImagemapArea(
                                 x=520, y=520, width=520, height=520
                             )
