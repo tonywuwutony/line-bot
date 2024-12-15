@@ -178,14 +178,14 @@ def handle_message(event):
             )
         elif text in ['主菜', '湯品', '飲料']:
             # 處理用戶選擇
-                text_mesages = TextMessage(
+            text_mesages = TextMessage(
                     text=f"您已成功將【{text}】加入購物車"
                 )
 
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     replyToken=event.replyToken,
-                    messages=[text=text_mesages]
+                    messages=[TextMessage(text=text_mesages)]
                 )
             )
 
