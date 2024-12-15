@@ -141,6 +141,16 @@ def handle_message(event):
                 alt_text='訂單確認',
                 template=confirm_template
             )
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[
+                        TextMessage(text=order_text),
+                        template_message
+                    ]
+                )
+            )
+
         else:
             line_bot_api.reply_message(
                 ReplyMessageRequest(
