@@ -150,7 +150,32 @@ def handle_message(event):
                     ]
                 )
             )
-
+        elif text == '我想吃飯':
+            quick_reply = QuickReply(
+                items=[
+                    QuickReplyItem(
+                        action=MessageAction(label='主菜', text='主菜-威靈頓牛排')
+                    ),
+                    QuickReplyItem(
+                        action=MessageAction(label='湯品', text='湯品-羅宋湯')
+                    ),
+                    QuickReplyItem(
+                        action=MessageAction(label='飲料', text='飲料-珍奶微微')
+                    )
+                ]
+            )
+            
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[
+                        TextMessage(
+                            text='您已成功將【選項名稱】加入購物車', 
+                            quick_reply=quick_reply
+                        )
+                    ]
+                )
+            )
         else:
             line_bot_api.reply_message(
                 ReplyMessageRequest(
