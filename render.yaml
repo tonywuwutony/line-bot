@@ -1,0 +1,14 @@
+services:
+- type: web
+  name: line-bot-python-flask
+  env: python
+  repo: https://github.com/tonywuwutony/line-bot.git  # 改为你自己的仓库地址
+  buildCommand: pip install -r line-bot/requirements.txt  # 确保有 requirements.txt
+  startCommand: cd line-bot && gunicorn app:app
+  plan: free
+  autoDeploy: false
+  envVars:
+  - key: LINE_CHANNEL_ACCESS_TOKEN
+    value: 9yw71ZXTKe9+K5yIzg/xTUYy05qa/CgcTDbGWmPoORR5vMMd243F3Zmdpps6K0EehZ5+daHPeWkc77nq5uRoQ2LJRX2aAoWnwo+5pM6hymvUcLGBk3UhSMdPkHSoau6fxR5wxiKpG9RpnSFhhPTLqQdB04t89/1O/w1cDnyilFU=  # 直接填入
+  - key: LINE_CHANNEL_SECRET
+    value: 1c1e2852ed77d82ca01a95e907d95ff6  # 直接填入
