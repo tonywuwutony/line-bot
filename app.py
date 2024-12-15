@@ -150,7 +150,7 @@ def handle_message(event):
                     ]
                 )
             )
-        elif text == '我想吃飯':
+        if text == '我想吃飯':
             quick_reply = QuickReply(
                 items=[
                     QuickReplyItem(
@@ -164,7 +164,7 @@ def handle_message(event):
                     )
                 ]
             )
-            
+        
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
@@ -176,15 +176,35 @@ def handle_message(event):
                     ]
                 )
             )
-
-
-        else:
+        
+        elif text == '選擇主菜':
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
-                    messages=[TextMessage(text=event.message.text)]
+                    messages=[
+                        TextMessage(text='您已成功將【主菜】加入購物車')
+                    ]
                 )
             )
+        elif text == '選擇湯品':
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[
+                        TextMessage(text='您已成功將【湯品】加入購物車')
+                    ]
+                )
+            )
+        elif text == '選擇飲料':
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[
+                        TextMessage(text='您已成功將【飲料】加入購物車')
+                    ]
+                )
+            )
+
 """        if text == '推薦景點':
 
             carousel_template_columns = [
