@@ -10,12 +10,13 @@ from linebot.v3 import (
 from linebot.v3.exceptions import (
     InvalidSignatureError
 )
+
 from linebot.v3.messaging import (
     Configuration,
     ImagemapArea,
     ApiClient,
-    CarouselTemplateColumn,
-    ImageCarouselTemplateColumn,
+    #CarouselTemplateColumn,
+    #ImageCarouselTemplateColumn,
     URIImagemapAction,
     ImagemapBaseSize,
     ApiClient,
@@ -94,28 +95,28 @@ def handle_message(event):
                     actions=[
                         # 日式料理區域
                         URIImagemapAction(
-                            link_uri=RESTAURANT_LINKS['日式料理'],
+                            linkUri=RESTAURANT_LINKS['日式料理'],
                             area=ImagemapArea(
                                 x=0, y=0, width=520, height=520
                             )
                         ),
                         # 西式料理區域
                         URIImagemapAction(
-                            link_uri=RESTAURANT_LINKS['西式料理'],
+                            linkUri=RESTAURANT_LINKS['西式料理'],
                             area=ImagemapArea(
                                 x=520, y=0, width=520, height=520
                             )
                         ),
                         # 中式料理區域
                         URIImagemapAction(
-                            link_uri=RESTAURANT_LINKS['中式料理'],
+                            linkUri=RESTAURANT_LINKS['中式料理'],
                             area=ImagemapArea(
                                 x=0, y=520, width=520, height=520
                             )
                         ),
                         # 法式料理區域
                         URIImagemapAction(
-                            link_uri=RESTAURANT_LINKS['法式料理'],
+                            linkUri=RESTAURANT_LINKS['法式料理'],
                             area=ImagemapArea(
                                 x=520, y=520, width=520, height=520
                             )
@@ -144,7 +145,7 @@ def handle_message(event):
                     messages=[TextMessage(text=event.message.text)]
                 )
             )
-        if text == '推薦景點':
+"""        if text == '推薦景點':
 
             carousel_template_columns = [
                 CarouselTemplateColumn(
@@ -387,7 +388,7 @@ def handle_postback(event):
                 )
             )
 
-
+"""
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
