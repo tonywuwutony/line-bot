@@ -16,7 +16,7 @@ from linebot.v3.messaging import (
     ImagemapArea,
     ApiClient,
     #CarouselTemplateColumn,
-    #ImageCarouselTemplateColumn,
+    ImageCarouselTemplateColumn,
     URIImagemapAction,
     ImagemapBaseSize,
     ApiClient,
@@ -83,11 +83,11 @@ def handle_message(event):
         text = event.message.text
         
         if text == '推薦餐廳':
+            base_url = request.url_root + 'static/food/1040'
+            base_url = base_url.replace("http://", "https://")
+            print(base_url)
             try:
                 # 構建餐廳推薦的 Imagemap
-                base_url = request.url_root + 'static/food/1040'
-                base_url = base_url.replace("http://", "https://")
-                
                 imagemap_message = ImagemapMessage(
                     base_url=base_url,
                     alt_text='餐廳推薦',
