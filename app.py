@@ -150,6 +150,7 @@ def handle_message(event):
                     ]
                 )
             )
+        elif text == '我想吃飯':
             quick_reply = QuickReply(
                 items=[
                     QuickReplyItem(
