@@ -93,28 +93,28 @@ def handle_message(event):
                     actions=[
                         # 日式料理區域
                         URIImagemapAction(
-                            linkUri=RESTAURANT_LINKS['日式料理'],
+                            link_uri=RESTAURANT_LINKS['日式料理'],
                             area=ImagemapArea(
                                 x=0, y=0, width=520, height=520
                             )
                         ),
                         # 西式料理區域
                         URIImagemapAction(
-                            linkUri=RESTAURANT_LINKS['西式料理'],
+                            link_uri=RESTAURANT_LINKS['西式料理'],
                             area=ImagemapArea(
                                 x=520, y=0, width=520, height=520
                             )
                         ),
                         # 中式料理區域
                         URIImagemapAction(
-                            linkUri=RESTAURANT_LINKS['中式料理'],
+                            link_uri=RESTAURANT_LINKS['中式料理'],
                             area=ImagemapArea(
                                 x=0, y=520, width=520, height=520
                             )
                         ),
                         # 法式料理區域
                         URIImagemapAction(
-                            linkUri=RESTAURANT_LINKS['法式料理'],
+                            link_uri=RESTAURANT_LINKS['法式料理'],
                             area=ImagemapArea(
                                 x=520, y=520, width=520, height=520
                             )
