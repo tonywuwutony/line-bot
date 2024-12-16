@@ -204,7 +204,7 @@ def handle_message(event):
                     ]
                 )
             )
-        elif text == '推薦景點':
+        if text == '推薦景點':
             carousel_template_columns = [
                 CarouselColumn(
                     title='台北101',
