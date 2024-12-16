@@ -35,6 +35,7 @@ from linebot.v3.messaging import (
     MessageAction,
     ImageCarouselTemplate,
     ImageCarouselColumn,
+    URITemplateAction,
     FlexMessage,
     FlexContainer
 )
