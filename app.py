@@ -150,7 +150,7 @@ def handle_message(event):
                     ]
                 )
             )
-        if text == '我想吃飯':
+        elif text == '我想吃飯':
             quick_reply = QuickReply(
                 items=[
                     QuickReplyItem(
@@ -204,9 +204,9 @@ def handle_message(event):
                     ]
                 )
             )
-        if text == '推薦景點':
+        elif text == '推薦景點':
             carousel_template_columns = [
-                CarouselTemplateColumn(
+                CarouselTemplate(
                     title='台北101',
                     text='台北市最著名的地標',
                     actions=[
@@ -216,7 +216,7 @@ def handle_message(event):
                         )
                     ]
                 ),
-                CarouselTemplateColumn(
+                CarouselTemplate(
                     title='故宮博物院',
                     text='收藏中國古代文物的博物館',
                     actions=[
@@ -226,7 +226,7 @@ def handle_message(event):
                         )
                     ]
                 ),
-                CarouselTemplateColumn(
+                CarouselTemplate(
                     title='九份老街',
                     text='懷舊的山城小鎮',
                     actions=[
