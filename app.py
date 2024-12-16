@@ -72,7 +72,7 @@ def handle_message(event):
         line_bot_api = MessagingApi(api_client)
 
         text = event.message.text
-       if text == '推薦景點':
+        if text == '推薦景點':
             carousel_template_columns = [
                 CarouselColumn(
                     title='台北101',
