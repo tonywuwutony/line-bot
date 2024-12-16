@@ -227,7 +227,7 @@ def create_restaurant_menu_flex_message():
                     )
                 ]
             )
-        )
+        ),
         FlexBubble(
             hero=FlexImage(
                 type="image",
