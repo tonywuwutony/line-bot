@@ -250,7 +250,7 @@ def handle_message(event):
                     ]
                 )
             )
-     elif text == '電影推薦':
+        elif text == '電影推薦':
             image_carousel_columns = [
                 ImageCarouselTemplateColumn(
                     image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/element.jpg?raw=true',
