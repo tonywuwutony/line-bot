@@ -252,7 +252,7 @@ def handle_message(event):
             )
         elif text == '電影推薦':
             image_carousel_columns = [
-                ImageCarouseleColumn(
+                ImageCarouselColumn(
                     image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/element.jpg?raw=true',
                     action=URIAction(
                         label='查看詳情',
