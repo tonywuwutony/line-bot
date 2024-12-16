@@ -72,7 +72,52 @@ def handle_message(event):
         line_bot_api = MessagingApi(api_client)
 
         text = event.message.text
-        
+       if text == '推薦景點':
+            carousel_template_columns = [
+                CarouselColumn(
+                    title='台北101',
+                    text='台北市最著名的地標',
+                    actions=[
+                        URIAction(
+                            label='查看詳情',
+                            uri='https://www.taipei101.com.tw/'
+                        )
+                    ]
+                ),
+                CarouselColumn(
+                    title='故宮博物院',
+                    text='收藏中國古代文物的博物館',
+                    actions=[
+                        URIAction(
+                            label='官方網站',
+                            uri='https://www.npm.gov.tw/'
+                        )
+                    ]
+                ),
+                CarouselColumn(
+                    title='九份老街',
+                    text='懷舊的山城小鎮',
+                    actions=[
+                        URIAction(
+                            label='景點介紹',
+                            uri='https://newtaipei.travel/zh-tw/attractions/detail/109990'
+                        )
+                    ]
+                )
+            ]
+
+            carousel_template = CarouselTemplate(columns=carousel_template_columns)
+            template_message = TemplateMessage(
+                alt_text='景點推薦',
+                template=carousel_template
+            )
+            
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[template_message]
+                )
+            )        
         if text == '推薦餐廳':
             base_url = 'https://github.com/tonywuwutony/line-bot/blob/main/static/food.png?raw=true'
             try:
@@ -204,52 +249,7 @@ def handle_message(event):
                     ]
                 )
             )
-        if text == '推薦景點':
-            carousel_template_columns = [
-                CarouselColumn(
-                    title='台北101',
-                    text='台北市最著名的地標',
-                    actions=[
-                        URIAction(
-                            label='查看詳情',
-                            uri='https://www.taipei101.com.tw/'
-                        )
-                    ]
-                ),
-                CarouselColumn(
-                    title='故宮博物院',
-                    text='收藏中國古代文物的博物館',
-                    actions=[
-                        URIAction(
-                            label='官方網站',
-                            uri='https://www.npm.gov.tw/'
-                        )
-                    ]
-                ),
-                CarouselColumn(
-                    title='九份老街',
-                    text='懷舊的山城小鎮',
-                    actions=[
-                        URIAction(
-                            label='景點介紹',
-                            uri='https://newtaipei.travel/zh-tw/attractions/detail/109990'
-                        )
-                    ]
-                )
-            ]
-
-            carousel_template = CarouselTemplate(columns=carousel_template_columns)
-            template_message = TemplateMessage(
-                alt_text='景點推薦',
-                template=carousel_template
-            )
-            
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=[template_message]
-                )
-            )
+ 
 """        if text == '推薦景點':
 
             carousel_template_columns = [
