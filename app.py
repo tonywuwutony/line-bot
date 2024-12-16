@@ -252,30 +252,6 @@ def handle_message(event):
                 )
             )
         elif text == '電影推薦':
-"""            movie_info = {
-                'elemental': {
-                    'name': '元素方程式',
-                    'date': '2023-06-16',
-                    'description': '在一個由元素所組成的城市中，火元素女孩和水元素男孩相遇並展開奇妙冒險。'
-                },
-                'inside_out_2': {
-                    'name': '腦筋急轉彎2',
-                    'date': '2024-06-14',
-                    'description': '瑞莉成長為青少年，內心情緒開始面臨更複雜的變化和挑戰。'
-                },
-                'sea': {
-                    'name': '海洋奇緣2',
-                    'date': '2024-11-17',
-                    'description': '海的故事'
-                },
-                'joke': {
-                    'name': '小丑',
-                    'date': '2019-10-12',
-                    'description': '小丑的故事'
-                },
-                
-    # 可以依此類推新增更多電影
-            }"""
             image_carousel_columns = [
                 ImageCarouselColumn(
                     image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/772A5BCB-AFA1-4FEA-8A15-46DA4F78596A.jpeg?raw=true',
