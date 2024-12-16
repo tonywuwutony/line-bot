@@ -550,7 +550,7 @@ def handle_message(event):
                 menu_message = create_restaurant_menu_flex_message()
                 
                 # 回覆訊息
-                messaging_api.reply_message(
+                line_bot_api.reply_message(
                     ReplyMessageRequest(
                         reply_token=event.reply_token,
                         messages=[menu_message]
