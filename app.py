@@ -303,7 +303,7 @@ def handle_message(event):
                     messages=[template_message]
                 )
             )
-        elif text == '查看菜單':
+         elif text == '查看菜單':
             menu_json={
             "type": "bubble",
             "hero": {
@@ -384,259 +384,269 @@ def handle_message(event):
                 ]
             }
             }
-            menu_string=json.dumps(menu_json)
 
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=[FlexMessage(alt_text="餐廳菜單",contents=FlexContainer.from_json(menu_string))]
-                )
-            )
-
-"""        if text == '推薦景點':
-
-            carousel_template_columns = [
-                CarouselTemplateColumn(
-                    title='台北101',
-                    text='台北市最著名的地標',
-                    actions=[
-                        URIAction(
-                            label='查看詳情',
-                            uri='https://www.taipei-101.com.tw/tw/'
-                        )
-                    ]
-                ),
-                CarouselTemplateColumn(
-                    title='故宮博物院',
-                    text='收藏中國古代文物的博物館',
-                    actions=[
-                        URIAction(
-                            label='官方網站',
-                            uri='https://www.npm.gov.tw/'
-                        )
-                    ]
-                ),
-                CarouselTemplateColumn(
-                    title='九份老街',
-                    text='懷舊的山城小鎮',
-                    actions=[
-                        URIAction(
-                            label='景點介紹',
-                            uri='https://newtaipei.travel/zh-tw/attractions/detail/109990'
-                        )
-                    ]
-                )
-            ]
-
-            carousel_template = CarouselTemplate(columns=carousel_template_columns)
-            template_message = TemplateMessage(
-                alt_text='景點推薦',
-                template=carousel_template
-            )
-            
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=[template_message]
-                )
-            )
-        
-        # 3. 訂餐流程
-        elif text == '我要訂餐':
-            order_text = '無敵好吃牛肉麵 * 1 ，總價NT200'
-            confirm_template = ConfirmTemplate(
-                text=order_text,
-                actions=[
-                    MessageAction(label='確定', text='確認訂單'),
-                    MessageAction(label='取消', text='取消訂單')
-                ]
-            )
-            template_message = TemplateMessage(
-                alt_text='訂單確認',
-                template=confirm_template
-            )
-            
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=[
-                        TextMessage(text=order_text),
-                        template_message
-                    ]
-                )
-            )
-        
-        # 4. 快速回覆選單 
-        elif text == '我想吃飯':
-            quick_reply = QuickReply(
-                items=[
-                    QuickReplyItem(
-                        action=MessageAction(label='主菜', text='選擇主菜')
-                    ),
-                    QuickReplyItem(
-                        action=MessageAction(label='湯品', text='選擇湯品')
-                    ),
-                    QuickReplyItem(
-                        action=MessageAction(label='飲料', text='選擇飲料')
-                    )
-                ]
-            )
-            
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=[
-                        TextMessage(
-                            text='請選擇您想要的種類', 
-                            quick_reply=quick_reply
-                        )
-                    ]
-                )
-            )
-
-        # 5. 電影推薦 ImageCarouselTemplate
-        elif text == '電影推薦':
-            image_carousel_columns = [
-                ImageCarouselTemplateColumn(
-                    image_url='https://example.com/movie1.jpg',
-                    action=URIAction(
-                        label='查看詳情',
-                        uri='https://example.com/movie1'
-                    )
-                ),
-                ImageCarouselTemplateColumn(
-                    image_url='https://example.com/movie2.jpg',
-                    action=URIAction(
-                        label='查看預告',
-                        uri='https://example.com/movie2-trailer'
-                    )
-                ),
-                ImageCarouselTemplateColumn(
-                    image_url='https://example.com/movie3.jpg',
-                    action=URIAction(
-                        label='立即購票',
-                        uri='https://example.com/movie3-ticket'
-                    )
-                ),
-                ImageCarouselTemplateColumn(
-                    image_url='https://example.com/movie4.jpg',
-                    action=URIAction(
-                        label='線上觀看',
-                        uri='https://example.com/movie4-watch'
-                    )
-                )
-            ]
-
-            image_carousel_template = ImageCarouselTemplate(columns=image_carousel_columns)
-            template_message = TemplateMessage(
-                alt_text='電影推薦',
-                template=image_carousel_template
-            )
-            
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=[template_message]
-                )
-            )
-        
-        # 6. 餐廳菜單 FlexMessage
-        elif text == '查看菜單':
-            menu_flex = {
-                "type": "carousel",
+            menu1_json={
+            "type": "bubble",
+            "hero": {
+                "type": "image",
+                "url": "https://github.com/tonywuwutony/line-bot/blob/main/static/%E7%82%92%E9%BA%B5.jpg?raw=true",
+                "size": "full",
+                "aspectRatio": "20:13",
+                "aspectMode": "cover",
+                "action": {
+                "type": "uri",
+                "uri": "https://line.me/"
+                }
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "md",
+                "action": {
+                "type": "uri",
+                "uri": "https://line.me/"
+                },
                 "contents": [
+                {
+                    "type": "text",
+                    "text": "炒麵",
+                    "size": "xl",
+                    "weight": "bold"
+                },
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "spacing": "sm",
+                    "contents": [
                     {
-                        "type": "bubble",
-                        "body": {
-                            "type": "box",
-                            "layout": "vertical",
-                            "contents": [
-                                {
-                                    "type": "image",
-                                    "url": "https://example.com/dish1.jpg",
-                                    "size": "full",
-                                    "aspectMode": "cover"
-                                },
-                                {
-                                    "type": "text",
-                                    "text": "香煎鮭魚",
-                                    "weight": "bold",
-                                    "size": "xl"
-                                },
-                                {
-                                    "type": "text",
-                                    "text": "新鮮鮭魚佐檸檬醬汁",
-                                    "color": "#aaaaaa"
-                                },
-                                {
-                                    "type": "text",
-                                    "text": "NT$280",
-                                    "color": "#ff0000"
-                                }
-                            ]
+                        "type": "box",
+                        "layout": "baseline",
+                        "contents": [
+                        {
+                            "type": "icon",
+                            "url": "https://developers-resource.landpress.line.me/fx/img/restaurant_regular_32.png"
                         },
-                        "footer": {
-                            "type": "box",
-                            "layout": "vertical",
-                            "contents": [
-                                {
-                                    "type": "button",
-                                    "action": {
-                                        "type": "message",
-                                        "label": "訂購",
-                                        "text": "加入購物車：香煎鮭魚"
-                                    }
-                                }
-                            ]
+                        {
+                            "type": "text",
+                            "text": "$200",
+                            "weight": "bold",
+                            "margin": "sm",
+                            "flex": 0
                         }
+                        ]
                     }
-                    # 可以添加更多菜品
+                    ]
+                },
+                {
+                    "type": "text",
+                    "text": "好吃的炒麵",
+                    "wrap": True,
+                    "color": "#aaaaaa",
+                    "size": "xxs"
+                }
+                ]
+            },
+            "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "button",
+                    "style": "primary",
+                    "color": "#905c44",
+                    "margin": "xxl",
+                    "action": {
+                    "type": "postback",
+                    "label": "訂購",
+                    "data": "已加入購物車",
+                    "displayText": "已加入購物車"
+                    }
+                }
                 ]
             }
+            }
+            menu2_json={
+            "type": "bubble",
+            "hero": {
+                "type": "image",
+                "url": "https://github.com/tonywuwutony/line-bot/blob/main/static/%E7%87%B4%E9%A3%AF.jpg?raw=true",
+                "size": "full",
+                "aspectRatio": "20:13",
+                "aspectMode": "cover",
+                "action": {
+                "type": "uri",
+                "uri": "https://line.me/"
+                }
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "md",
+                "action": {
+                "type": "uri",
+                "uri": "https://line.me/"
+                },
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "燴飯",
+                    "size": "xl",
+                    "weight": "bold"
+                },
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "spacing": "sm",
+                    "contents": [
+                    {
+                        "type": "box",
+                        "layout": "baseline",
+                        "contents": [
+                        {
+                            "type": "icon",
+                            "url": "https://developers-resource.landpress.line.me/fx/img/restaurant_regular_32.png"
+                        },
+                        {
+                            "type": "text",
+                            "text": "$200",
+                            "weight": "bold",
+                            "margin": "sm",
+                            "flex": 0
+                        }
+                        ]
+                    }
+                    ]
+                },
+                {
+                    "type": "text",
+                    "text": "好吃的燴飯",
+                    "wrap": True,
+                    "color": "#aaaaaa",
+                    "size": "xxs"
+                }
+                ]
+            },
+            "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "button",
+                    "style": "primary",
+                    "color": "#905c44",
+                    "margin": "xxl",
+                    "action": {
+                    "type": "postback",
+                    "label": "訂購",
+                    "data": "已加入購物車",
+                    "displayText": "已加入購物車"
+                    }
+                }
+                ]
+            }
+            }
 
+            menu3_json={
+            "type": "bubble",
+            "hero": {
+                "type": "image",
+                "url": "https://github.com/tonywuwutony/line-bot/blob/main/static/%E6%BB%B7%E8%82%89%E9%A3%AF.jpg?raw=true",
+                "size": "full",
+                "aspectRatio": "20:13",
+                "aspectMode": "cover",
+                "action": {
+                "type": "uri",
+                "uri": "https://line.me/"
+                }
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "md",
+                "action": {
+                "type": "uri",
+                "uri": "https://line.me/"
+                },
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "滷肉飯",
+                    "size": "xl",
+                    "weight": "bold"
+                },
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "spacing": "sm",
+                    "contents": [
+                    {
+                        "type": "box",
+                        "layout": "baseline",
+                        "contents": [
+                        {
+                            "type": "icon",
+                            "url": "https://developers-resource.landpress.line.me/fx/img/restaurant_regular_32.png"
+                        },
+                        {
+                            "type": "text",
+                            "text": "$200",
+                            "weight": "bold",
+                            "margin": "sm",
+                            "flex": 0
+                        }
+                        ]
+                    }
+                    ]
+                },
+                {
+                    "type": "text",
+                    "text": "好吃的滷肉飯",
+                    "wrap": True,
+                    "color": "#aaaaaa",
+                    "size": "xxs"
+                }
+                ]
+            },
+            "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "button",
+                    "style": "primary",
+                    "color": "#905c44",
+                    "margin": "xxl",
+                    "action": {
+                    "type": "postback",
+                    "label": "訂購",
+                    "data": "已加入購物車",
+                    "displayText": "已加入購物車"
+                    }
+                }
+                ]
+            }
+            }
+            menu_string = {
+                "type": "carousel",
+                "contents": [
+                FlexContainer.from_json(json.dumps(menu_json)),
+                FlexContainer.from_json(json.dumps(menu1_json)),
+                FlexContainer.from_json(json.dumps(menu2_json)),
+                FlexContainer.from_json(json.dumps(menu3_json))
+                ]
+            }
             flex_message = FlexMessage(
-                alt_text='餐廳菜單',
-                contents=FlexContainer.from_json(menu_flex)
+            alt_text="菜單",
+            contents=FlexContainer.from_json(json.dumps(menu_string))
             )
-            
+
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
                     messages=[flex_message]
                 )
             )
-        
-        # 對於其他訊息
-        else:
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=[TextMessage(text=event.message.text)]
-                )
-            )
 
-# 處理訂單確認和取消的 Postback 事件
-@handler.add(PostbackEvent)
-def handle_postback(event):
-    with ApiClient(configuration) as api_client:
-        line_bot_api = MessagingApi(api_client)
-        
-        if event.postback.data == '確認訂單':
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=[TextMessage(text='訂單已確認，謝謝您的購買！')]
-                )
-            )
-        elif event.postback.data == '取消訂單':
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=[TextMessage(text='已取消訂單，謝謝您的光臨！')]
-                )
-            )
-
-"""
 import os
 if __name__ == "__main__":
     print("start")
