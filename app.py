@@ -250,51 +250,7 @@ def handle_message(event):
                     ]
                 )
             )
-        elif text == '電影推薦':
-            image_carousel_columns = [
-                ImageCarouselColumn(
-                    image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/element.jpg?raw=true',
-                    action=URIAction(
-                        label='查看詳情',
-                        uri='https://movies.disney.com/elemental'
-                    )
-                ),
-                ImageCarouselColumn(
-                    image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/emotions.jpg?raw=true',
-                    action=URIAction(
-                        label='查看預告',
-                        uri='Inside Out 2Disney Movieshttps://movies.disney.com › inside-out-2'
-                    )
-                ),
-                ImageCarouselColumn(
-                    image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/joke.jpg?raw=true',
-                    action=URIAction(
-                        label='立即購票',
-                        uri='The Joke (1969)IMDbhttps://www.imdb.com › title'
-                    )
-                ),
-                ImageCarouselColumn(
-                    image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/sea.jpg?raw=true',
-                    action=URIAction(
-                        label='線上觀看',
-                        uri='https://www.ambassador.com.tw/home/MovieContent?MID=c3f20454-6f08-4771-a9a1-cbec31812d7e&DT=2024/12/13'
-                    )
-                )
-            ]
 
-            image_carousel_template = ImageCarouselTemplate(columns=image_carousel_columns)
-            template_message = TemplateMessage(
-                alt_text='電影推薦',
-                template=image_carousel_template
-            )
-            
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=[template_message]
-                )
-            )
-        
 """        if text == '推薦景點':
 
             carousel_template_columns = [
