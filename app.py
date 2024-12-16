@@ -496,7 +496,7 @@ def handle_message(event):
                         messages=[menu_message]
                     )
                 )
-            elif event.message.text.startswith("加入購物車："):
+        elif event.message.text.startswith("加入購物車："):
                 # 處理加入購物車邏輯
                 messaging_api.reply_message(
                     ReplyMessageRequest(
