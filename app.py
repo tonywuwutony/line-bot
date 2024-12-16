@@ -252,7 +252,7 @@ def handle_message(event):
                 )
             )
         elif text == '電影推薦':
-            movie_info = {
+"""            movie_info = {
                 'elemental': {
                     'name': '元素方程式',
                     'date': '2023-06-16',
@@ -273,53 +273,37 @@ def handle_message(event):
                     'date': '2019-10-12',
                     'description': '小丑的故事'
                 },
-                
+                """
     # 可以依此類推新增更多電影
             }
             image_carousel_columns = [
                 ImageCarouselColumn(
                     image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/772A5BCB-AFA1-4FEA-8A15-46DA4F78596A.jpeg?raw=true',
-                    action=[URIAction(
+                    action=URIAction(
                         label='查看詳情',
                         uri='https://www.disneyplus.com/zh-tw/movies/elemental/1B2ZQ9GF35W5'
-                    ),
-                    PostbackAction(
-                        label='查看詳情',
-                        data='movie_info:elemental'
-                    )]
+                    )
                 ),
                 ImageCarouselColumn(
                     image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/A785BADF-002F-4ADA-8161-DB79EE432FE7.jpeg?raw=true',
-                    action=[URIAction(
+                    action=URIAction(
                         label='查看詳情',
                         uri='https://zh.wikipedia.org/zh-tw/%E8%85%A6%E7%AD%8B%E6%80%A5%E8%BD%89%E5%BD%8E2'
-                    ),
-                    PostbackAction(
-                        label='查看詳情',
-                        data='movie_info:inside_out_2'
-                    )]
+                    )
                 ),
                 ImageCarouselColumn(
                     image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/67FDAE20-E024-4FBD-B8D9-7EC19677BCDF.jpeg?raw=true',
-                    action=[URIAction(
+                    action=URIAction(
                         label='查看詳情',
                         uri='https://www.imdb.com/title/tt0065241/'
-                    ),
-                    PostbackAction(
-                        label='查看詳情',
-                        data='movie_info:joke'
-                    )]
+                    )
                 ),
                 ImageCarouselColumn(
                     image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/3E174B77-D760-43F3-AA68-A2697C73AA70.jpeg?raw=true',
-                    action=[URIAction(
+                    action=URIAction(
                         label='查看詳情',
                         uri='https://www.ambassador.com.tw/home/MovieContent?MID=c3f20454-6f08-4771-a9a1-cbec31812d7e&DT=2024/12/13'
-                    ),
-                    PostbackAction(
-                        label='查看詳情',
-                        data='movie_info:sea'
-                    )]                    
+                    )
                 )
             ]
 
