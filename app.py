@@ -254,28 +254,28 @@ def handle_message(event):
             image_carousel_columns = [
                 ImageCarouselTemplate(
                     image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/element.jpg?raw=true',
-                    action=URIAction(
+                    action=URITemplateAction(
                         label='查看詳情',
-                        uri='ElementalDisney Movieshttps://movies.disney.com › elemental'
+                        uri='https://www.disneyplus.com/zh-tw/movies/elemental/1B2ZQ9GF35W5'
                     )
                 ),
                 ImageCarouselTemplate(
                     image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/emotions.jpg?raw=true',
-                    action=URIAction(
+                    action=URITemplateAction(
                         label='查看預告',
-                        uri='Inside Out 2Disney Movieshttps://movies.disney.com › inside-out-2'
+                        uri='https://zh.wikipedia.org/zh-tw/%E8%85%A6%E7%AD%8B%E6%80%A5%E8%BD%89%E5%BD%8E2'
                     )
                 ),
                 ImageCarouselTemplate(
                     image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/joke.jpg?raw=true',
-                    action=URIAction(
+                    action=URITemplateAction(
                         label='立即購票',
                         uri='https://www.imdb.com/title/tt0065241/'
                     )
                 ),
                 ImageCarouselTemplate(
                     image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/sea.jpg?raw=true',
-                    action=URIAction(
+                    action=URITemplateAction(
                         label='線上觀看',
                         uri='https://www.ambassador.com.tw/home/MovieContent?MID=c3f20454-6f08-4771-a9a1-cbec31812d7e&DT=2024/12/13'
                     )
