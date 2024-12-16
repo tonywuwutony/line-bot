@@ -48,6 +48,196 @@ app = Flask(__name__)
 configuration = Configuration(access_token='9yw71ZXTKe9+K5yIzg/xTUYy05qa/CgcTDbGWmPoORR5vMMd243F3Zmdpps6K0EehZ5+daHPeWkc77nq5uRoQ2LJRX2aAoWnwo+5pM6hymvUcLGBk3UhSMdPkHSoau6fxR5wxiKpG9RpnSFhhPTLqQdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('1c1e2852ed77d82ca01a95e907d95ff6')
 
+def create_restaurant_menu_flex_message():
+    # 建立菜單的 Flex Message
+    bubbles = [
+        FlexBubble(
+            hero=FlexImage(
+                type="image",
+                url="https://example.com/steak.jpg",
+                size="full",
+                aspect_ratio="20:13",
+                aspect_mode="cover"
+            ),
+            body=FlexBox(
+                layout="vertical",
+                contents=[
+                    FlexText(
+                        text="經典牛排",
+                        weight="bold",
+                        size="xl"
+                    ),
+                    FlexBox(
+                        layout="vertical",
+                        margin="lg",
+                        contents=[
+                            FlexText(
+                                text="嚴選prime級牛肉，外層金黃酥脆，內部鮮嫩多汁",
+                                color="#666666",
+                                wrap=True
+                            )
+                        ]
+                    ),
+                    FlexBox(
+                        layout="baseline",
+                        margin="md",
+                        contents=[
+                            FlexText(
+                                text="NT$",
+                                color="#999999",
+                                size="sm"
+                            ),
+                            FlexText(
+                                text="680",
+                                weight="bold",
+                                color="#000000"
+                            )
+                        ]
+                    )
+                ]
+            ),
+            footer=FlexBox(
+                layout="vertical",
+                contents=[
+                    FlexButton(
+                        style="primary",
+                        action={
+                            "type": "message",
+                            "label": "訂購",
+                            "text": "加入購物車：經典牛排"
+                        }
+                    )
+                ]
+            )
+        ),
+        FlexBubble(
+            hero=FlexImage(
+                type="image",
+                url="https://example.com/salmon.jpg",
+                size="full",
+                aspect_ratio="20:13",
+                aspect_mode="cover"
+            ),
+            body=FlexBox(
+                layout="vertical",
+                contents=[
+                    FlexText(
+                        text="煙燻鮭魚沙拉",
+                        weight="bold",
+                        size="xl"
+                    ),
+                    FlexBox(
+                        layout="vertical",
+                        margin="lg",
+                        contents=[
+                            FlexText(
+                                text="新鮮煙燻鮭魚搭配綜合生菜，口感清爽豐富",
+                                color="#666666",
+                                wrap=True
+                            )
+                        ]
+                    ),
+                    FlexBox(
+                        layout="baseline",
+                        margin="md",
+                        contents=[
+                            FlexText(
+                                text="NT$",
+                                color="#999999",
+                                size="sm"
+                            ),
+                            FlexText(
+                                text="320",
+                                weight="bold",
+                                color="#000000"
+                            )
+                        ]
+                    )
+                ]
+            ),
+            footer=FlexBox(
+                layout="vertical",
+                contents=[
+                    FlexButton(
+                        style="primary",
+                        action={
+                            "type": "message",
+                            "label": "訂購",
+                            "text": "加入購物車：煙燻鮭魚沙拉"
+                        }
+                    )
+                ]
+            )
+        ),
+        FlexBubble(
+            hero=FlexImage(
+                type="image",
+                url="https://example.com/dessert.jpg",
+                size="full",
+                aspect_ratio="20:13",
+                aspect_mode="cover"
+            ),
+            body=FlexBox(
+                layout="vertical",
+                contents=[
+                    FlexText(
+                        text="巧克力摩卡蛋糕",
+                        weight="bold",
+                        size="xl"
+                    ),
+                    FlexBox(
+                        layout="vertical",
+                        margin="lg",
+                        contents=[
+                            FlexText(
+                                text="濃郁巧克力與咖啡完美融合，輕盈濕潤的蛋糕口感",
+                                color="#666666",
+                                wrap=True
+                            )
+                        ]
+                    ),
+                    FlexBox(
+                        layout="baseline",
+                        margin="md",
+                        contents=[
+                            FlexText(
+                                text="NT$",
+                                color="#999999",
+                                size="sm"
+                            ),
+                            FlexText(
+                                text="180",
+                                weight="bold",
+                                color="#000000"
+                            )
+                        ]
+                    )
+                ]
+            ),
+            footer=FlexBox(
+                layout="vertical",
+                contents=[
+                    FlexButton(
+                        style="primary",
+                        action={
+                            "type": "message",
+                            "label": "訂購",
+                            "text": "加入購物車：巧克力摩卡蛋糕"
+                        }
+                    )
+                ]
+            )
+        )
+    ]
+
+    return FlexMessage(
+        alt_text="餐廳菜單",
+        contents=FlexMessageContainer(
+            type="carousel",
+            contents=bubbles
+        )
+    )
+
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -295,7 +485,25 @@ def handle_message(event):
                     messages=[template_message]
                 )
             )
-
+        elif text == "查看菜單":
+                # 建立菜單 Flex Message
+                menu_message = create_restaurant_menu_flex_message()
+                
+                # 回覆訊息
+                messaging_api.reply_message(
+                    ReplyMessageRequest(
+                        reply_token=event.reply_token,
+                        messages=[menu_message]
+                    )
+                )
+            elif event.message.text.startswith("加入購物車："):
+                # 處理加入購物車邏輯
+                messaging_api.reply_message(
+                    ReplyMessageRequest(
+                        reply_token=event.reply_token,
+                        messages=[TextMessage(text="已加入購物車！")]
+                    )
+                )
 """        if text == '推薦景點':
 
             carousel_template_columns = [
