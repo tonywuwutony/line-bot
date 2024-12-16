@@ -56,256 +56,6 @@ app = Flask(__name__)
 configuration = Configuration(access_token='9yw71ZXTKe9+K5yIzg/xTUYy05qa/CgcTDbGWmPoORR5vMMd243F3Zmdpps6K0EehZ5+daHPeWkc77nq5uRoQ2LJRX2aAoWnwo+5pM6hymvUcLGBk3UhSMdPkHSoau6fxR5wxiKpG9RpnSFhhPTLqQdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('1c1e2852ed77d82ca01a95e907d95ff6')
 
-def create_restaurant_menu_flex_message():
-    # 建立菜單的 Flex Message
-    bubbles = [
-        FlexBubble(
-            hero=FlexImage(
-                type="image",
-                url="https://github.com/tonywuwutony/line-bot/blob/main/static/%E6%BB%B7%E8%82%89%E9%A3%AF.jpg?raw=true",
-                size="full",
-                aspect_ratio="20:13",
-                aspect_mode="cover"
-            ),
-            body=FlexBox(
-                layout="vertical",
-                contents=[
-                    FlexText(
-                        text="滷肉飯",
-                        weight="bold",
-                        size="xl"
-                    ),
-                    FlexBox(
-                        layout="vertical",
-                        margin="lg",
-                        contents=[
-                            FlexText(
-                                text="嚴選滷肉飯",
-                                color="#666666",
-                                wrap=True
-                            )
-                        ]
-                    ),
-                    FlexBox(
-                        layout="baseline",
-                        margin="md",
-                        contents=[
-                            FlexText(
-                                text="NT$60",
-                                color="#999999",
-                                size="sm"
-                            ),
-                            FlexText(
-                                text="680",
-                                weight="bold",
-                                color="#000000"
-                            )
-                        ]
-                    )
-                ]
-            ),
-            footer=FlexBox(
-                layout="vertical",
-                contents=[
-                    FlexButton(
-                        style="primary",
-                        action={
-                            "type": "message",
-                            "label": "訂購",
-                            "text": "加入購物車"
-                        }
-                    )
-                ]
-            )
-        ),
-        FlexBubble(
-            hero=FlexImage(
-                type="image",
-                url="https://github.com/tonywuwutony/line-bot/blob/main/static/%E7%82%92%E9%A3%AF.jpg?raw=true",
-                size="full",
-                aspect_ratio="20:13",
-                aspect_mode="cover"
-            ),
-            body=FlexBox(
-                layout="vertical",
-                contents=[
-                    FlexText(
-                        text="炒飯",
-                        weight="bold",
-                        size="xl"
-                    ),
-                    FlexBox(
-                        layout="vertical",
-                        margin="lg",
-                        contents=[
-                            FlexText(
-                                text="新鮮炒飯",
-                                color="#666666",
-                                wrap=True
-                            )
-                        ]
-                    ),
-                    FlexBox(
-                        layout="baseline",
-                        margin="md",
-                        contents=[
-                            FlexText(
-                                text="NT$100",
-                                color="#999999",
-                                size="sm"
-                            ),
-                            FlexText(
-                                text="320",
-                                weight="bold",
-                                color="#000000"
-                            )
-                        ]
-                    )
-                ]
-            ),
-            footer=FlexBox(
-                layout="vertical",
-                contents=[
-                    FlexButton(
-                        style="primary",
-                        action={
-                            "type": "message",
-                            "label": "訂購",
-                            "text": "加入購物車"
-                        }
-                    )
-                ]
-            )
-        ),
-        FlexBubble(
-            hero=FlexImage(
-                type="image",
-                url="https://github.com/tonywuwutony/line-bot/blob/main/static/%E7%82%92%E9%BA%B5.jpg?raw=true",
-                size="full",
-                aspect_ratio="20:13",
-                aspect_mode="cover"
-            ),
-            body=FlexBox(
-                layout="vertical",
-                contents=[
-                    FlexText(
-                        text="炒麵",
-                        weight="bold",
-                        size="xl"
-                    ),
-                    FlexBox(
-                        layout="vertical",
-                        margin="lg",
-                        contents=[
-                            FlexText(
-                                text="濃郁炒麵",
-                                color="#666666",
-                                wrap=True
-                            )
-                        ]
-                    ),
-                    FlexBox(
-                        layout="baseline",
-                        margin="md",
-                        contents=[
-                            FlexText(
-                                text="NT$200",
-                                color="#999999",
-                                size="sm"
-                            ),
-                            FlexText(
-                                text="180",
-                                weight="bold",
-                                color="#000000"
-                            )
-                        ]
-                    )
-                ]
-            ),
-            footer=FlexBox(
-                layout="vertical",
-                contents=[
-                    FlexButton(
-                        style="primary",
-                        action={
-                            "type": "message",
-                            "label": "訂購",
-                            "text": "加入購物車"
-                        }
-                    )
-                ]
-            )
-        ),
-        FlexBubble(
-            hero=FlexImage(
-                type="image",
-                url="https://github.com/tonywuwutony/line-bot/blob/main/static/%E7%87%B4%E9%A3%AF.jpg?raw=true",
-                size="full",
-                aspect_ratio="20:13",
-                aspect_mode="cover"
-            ),
-            body=FlexBox(
-                layout="vertical",
-                contents=[
-                    FlexText(
-                        text="燴飯",
-                        weight="bold",
-                        size="xl"
-                    ),
-                    FlexBox(
-                        layout="vertical",
-                        margin="lg",
-                        contents=[
-                            FlexText(
-                                text="超厲害燴飯",
-                                color="#666666",
-                                wrap=True
-                            )
-                        ]
-                    ),
-                    FlexBox(
-                        layout="baseline",
-                        margin="md",
-                        contents=[
-                            FlexText(
-                                text="NT$230",
-                                color="#999999",
-                                size="sm"
-                            ),
-                            FlexText(
-                                text="180",
-                                weight="bold",
-                                color="#000000"
-                            )
-                        ]
-                    )
-                ]
-            ),
-            footer=FlexBox(
-                layout="vertical",
-                contents=[
-                    FlexButton(
-                        style="primary",
-                        action={
-                            "type": "message",
-                            "label": "訂購",
-                            "text": "加入購物車"
-                        }
-                    )
-                ]
-            )
-        )
-
-    ]
-
-    return FlexMessage(
-        alt_text="餐廳菜單",
-        contents=FlexMessageContainer(
-            type="carousel",
-            contents=bubbles
-        )
-    )
-
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -553,25 +303,95 @@ def handle_message(event):
                     messages=[template_message]
                 )
             )
-        elif text == "查看菜單":
-                # 建立菜單 Flex Message
-                menu_message = create_restaurant_menu_flex_message()
-                
-                # 回覆訊息
-                line_bot_api.reply_message(
-                    ReplyMessageRequest(
-                        reply_token=event.reply_token,
-                        messages=[menu_message]
-                    )
+        elif text == '查看菜單':
+            menu_json={
+            "type": "bubble",
+            "hero": {
+                "type": "image",
+                "url": "https://github.com/tonywuwutony/line-bot/blob/main/static/%E7%82%92%E9%A3%AF.jpg?raw=true",
+                "size": "full",
+                "aspectRatio": "20:13",
+                "aspectMode": "cover",
+                "action": {
+                "type": "uri",
+                "uri": "https://line.me/"
+                }
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "md",
+                "action": {
+                "type": "uri",
+                "uri": "https://line.me/"
+                },
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "炒飯",
+                    "size": "xl",
+                    "weight": "bold"
+                },
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "spacing": "sm",
+                    "contents": [
+                    {
+                        "type": "box",
+                        "layout": "baseline",
+                        "contents": [
+                        {
+                            "type": "icon",
+                            "url": "https://developers-resource.landpress.line.me/fx/img/restaurant_regular_32.png"
+                        },
+                        {
+                            "type": "text",
+                            "text": "$200",
+                            "weight": "bold",
+                            "margin": "sm",
+                            "flex": 0
+                        }
+                        ]
+                    }
+                    ]
+                },
+                {
+                    "type": "text",
+                    "text": "好吃的炒飯",
+                    "wrap": True,
+                    "color": "#aaaaaa",
+                    "size": "xxs"
+                }
+                ]
+            },
+            "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "button",
+                    "style": "primary",
+                    "color": "#905c44",
+                    "margin": "xxl",
+                    "action": {
+                    "type": "postback",
+                    "label": "訂購",
+                    "data": "已加入購物車"
+                    }
+                }
+                ]
+            }
+            }
+            menu_string=json.dumps(menu_json)
+
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[FlexMessage(content=FlexContainer.from_json(menu_string))]
                 )
-        elif event.message.text.startswith("加入購物車："):
-                # 處理加入購物車邏輯
-                messaging_api.reply_message(
-                    ReplyMessageRequest(
-                        reply_token=event.reply_token,
-                        messages=[TextMessage(text="已加入購物車！")]
-                    )
-                )
+            )
+
 """        if text == '推薦景點':
 
             carousel_template_columns = [
