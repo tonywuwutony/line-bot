@@ -222,7 +222,7 @@ def handle_message(event):
                     actions=[
                         URIAction(
                             label='官方網站',
-                            uri=''
+                            uri='https://www.npm.gov.tw/'
                         )
                     ]
                 ),
@@ -232,7 +232,7 @@ def handle_message(event):
                     actions=[
                         URIAction(
                             label='景點介紹',
-                            uri='https://taiwan.net.tw/m/Attractions/Taiwan_A01_01.aspx'
+                            uri='https://newtaipei.travel/zh-tw/attractions/detail/109990'
                         )
                     ]
                 )
