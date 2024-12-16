@@ -303,7 +303,7 @@ def handle_message(event):
                     messages=[template_message]
                 )
             )
-         elif text == '查看菜單':
+        elif text == '查看菜單':
             menu_json={
             "type": "bubble",
             "hero": {
