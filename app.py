@@ -378,6 +378,7 @@ def handle_message(event):
                     "type": "postback",
                     "label": "訂購",
                     "data": "已加入購物車"
+                    "displayText": "已加入購物車"
                     }
                 }
                 ]
