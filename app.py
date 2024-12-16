@@ -275,7 +275,7 @@ def handle_message(event):
                 },
                 
     # 可以依此類推新增更多電影
-}
+            }
             image_carousel_columns = [
                 ImageCarouselColumn(
                     image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/772A5BCB-AFA1-4FEA-8A15-46DA4F78596A.jpeg?raw=true',
