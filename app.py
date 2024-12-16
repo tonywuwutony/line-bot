@@ -273,7 +273,7 @@ def handle_message(event):
                         uri='The Joke (1969)IMDbhttps://www.imdb.com › title'
                     )
                 ),
-                ImageCarouselTemplateColumn(
+                ImageCarouselColumn(
                     image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/sea.jpg?raw=true',
                     action=URIAction(
                         label='線上觀看',
