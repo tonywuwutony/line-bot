@@ -13,6 +13,14 @@ from linebot.v3.exceptions import (
 )
 
 from linebot.v3.messaging import (
+    FlexMessage, 
+    FlexBubble, 
+    FlexBox, 
+    FlexText, 
+    FlexButton, 
+    FlexImage,
+    #FlexMessageContainer,
+    TextMessage,
     Configuration,
     ImagemapArea,
     ApiClient,
