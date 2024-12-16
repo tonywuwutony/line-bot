@@ -34,7 +34,7 @@ from linebot.v3.messaging import (
     PostbackAction,
     MessageAction,
     ImageCarouselTemplate,
-
+    ImageCarouselColumn,
     FlexMessage,
     FlexContainer
 )
@@ -252,21 +252,21 @@ def handle_message(event):
             )
         elif text == '電影推薦':
             image_carousel_columns = [
-                ImageCarouselTemplateColumn(
+                ImageCarouseleColumn(
                     image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/element.jpg?raw=true',
                     action=URIAction(
                         label='查看詳情',
                         uri='https://movies.disney.com/elemental'
                     )
                 ),
-                ImageCarouselTemplateColumn(
+                ImageCarouselColumn(
                     image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/emotions.jpg?raw=true',
                     action=URIAction(
                         label='查看預告',
                         uri='Inside Out 2Disney Movieshttps://movies.disney.com › inside-out-2'
                     )
                 ),
-                ImageCarouselTemplateColumn(
+                ImageCarouselColumn(
                     image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/joke.jpg?raw=true',
                     action=URIAction(
                         label='立即購票',
