@@ -25,6 +25,7 @@ from linebot.v3.messaging import (
     TextMessage,
     TemplateMessage,
     CarouselTemplate,
+    CarouselColumn,
     ImagemapMessage,
     ConfirmTemplate,
     QuickReply,
