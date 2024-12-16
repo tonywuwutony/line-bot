@@ -6,8 +6,8 @@ import os
 
 from linebot.v3 import (
     WebhookHandler,
-    URITemplateAction
 )
+from linebot.v3.models import URITemplateAcion
 from linebot.v3.exceptions import (
     InvalidSignatureError
 )
