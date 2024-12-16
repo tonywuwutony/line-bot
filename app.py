@@ -54,7 +54,7 @@ def create_restaurant_menu_flex_message():
         FlexBubble(
             hero=FlexImage(
                 type="image",
-                url="https://example.com/steak.jpg",
+                url="https://github.com/tonywuwutony/line-bot/blob/main/static/%E6%BB%B7%E8%82%89%E9%A3%AF.jpg?raw=true",
                 size="full",
                 aspect_ratio="20:13",
                 aspect_mode="cover"
@@ -63,7 +63,7 @@ def create_restaurant_menu_flex_message():
                 layout="vertical",
                 contents=[
                     FlexText(
-                        text="經典牛排",
+                        text="滷肉飯",
                         weight="bold",
                         size="xl"
                     ),
@@ -72,7 +72,7 @@ def create_restaurant_menu_flex_message():
                         margin="lg",
                         contents=[
                             FlexText(
-                                text="嚴選prime級牛肉，外層金黃酥脆，內部鮮嫩多汁",
+                                text="嚴選滷肉飯",
                                 color="#666666",
                                 wrap=True
                             )
@@ -83,7 +83,7 @@ def create_restaurant_menu_flex_message():
                         margin="md",
                         contents=[
                             FlexText(
-                                text="NT$",
+                                text="NT$60",
                                 color="#999999",
                                 size="sm"
                             ),
@@ -104,7 +104,7 @@ def create_restaurant_menu_flex_message():
                         action={
                             "type": "message",
                             "label": "訂購",
-                            "text": "加入購物車：經典牛排"
+                            "text": "加入購物車"
                         }
                     )
                 ]
@@ -113,7 +113,7 @@ def create_restaurant_menu_flex_message():
         FlexBubble(
             hero=FlexImage(
                 type="image",
-                url="https://example.com/salmon.jpg",
+                url="https://github.com/tonywuwutony/line-bot/blob/main/static/%E7%82%92%E9%A3%AF.jpg?raw=true",
                 size="full",
                 aspect_ratio="20:13",
                 aspect_mode="cover"
@@ -122,7 +122,7 @@ def create_restaurant_menu_flex_message():
                 layout="vertical",
                 contents=[
                     FlexText(
-                        text="煙燻鮭魚沙拉",
+                        text="炒飯",
                         weight="bold",
                         size="xl"
                     ),
@@ -131,7 +131,7 @@ def create_restaurant_menu_flex_message():
                         margin="lg",
                         contents=[
                             FlexText(
-                                text="新鮮煙燻鮭魚搭配綜合生菜，口感清爽豐富",
+                                text="新鮮炒飯",
                                 color="#666666",
                                 wrap=True
                             )
@@ -142,7 +142,7 @@ def create_restaurant_menu_flex_message():
                         margin="md",
                         contents=[
                             FlexText(
-                                text="NT$",
+                                text="NT$100",
                                 color="#999999",
                                 size="sm"
                             ),
@@ -163,7 +163,7 @@ def create_restaurant_menu_flex_message():
                         action={
                             "type": "message",
                             "label": "訂購",
-                            "text": "加入購物車：煙燻鮭魚沙拉"
+                            "text": "加入購物車"
                         }
                     )
                 ]
@@ -172,7 +172,7 @@ def create_restaurant_menu_flex_message():
         FlexBubble(
             hero=FlexImage(
                 type="image",
-                url="https://example.com/dessert.jpg",
+                url="https://github.com/tonywuwutony/line-bot/blob/main/static/%E7%82%92%E9%BA%B5.jpg?raw=true",
                 size="full",
                 aspect_ratio="20:13",
                 aspect_mode="cover"
@@ -181,7 +181,7 @@ def create_restaurant_menu_flex_message():
                 layout="vertical",
                 contents=[
                     FlexText(
-                        text="巧克力摩卡蛋糕",
+                        text="炒麵",
                         weight="bold",
                         size="xl"
                     ),
@@ -190,7 +190,7 @@ def create_restaurant_menu_flex_message():
                         margin="lg",
                         contents=[
                             FlexText(
-                                text="濃郁巧克力與咖啡完美融合，輕盈濕潤的蛋糕口感",
+                                text="濃郁炒麵",
                                 color="#666666",
                                 wrap=True
                             )
@@ -201,7 +201,7 @@ def create_restaurant_menu_flex_message():
                         margin="md",
                         contents=[
                             FlexText(
-                                text="NT$",
+                                text="NT$200",
                                 color="#999999",
                                 size="sm"
                             ),
@@ -222,12 +222,72 @@ def create_restaurant_menu_flex_message():
                         action={
                             "type": "message",
                             "label": "訂購",
-                            "text": "加入購物車：巧克力摩卡蛋糕"
+                            "text": "加入購物車"
                         }
                     )
                 ]
             )
         )
+        FlexBubble(
+            hero=FlexImage(
+                type="image",
+                url="https://github.com/tonywuwutony/line-bot/blob/main/static/%E7%87%B4%E9%A3%AF.jpg?raw=true",
+                size="full",
+                aspect_ratio="20:13",
+                aspect_mode="cover"
+            ),
+            body=FlexBox(
+                layout="vertical",
+                contents=[
+                    FlexText(
+                        text="燴飯",
+                        weight="bold",
+                        size="xl"
+                    ),
+                    FlexBox(
+                        layout="vertical",
+                        margin="lg",
+                        contents=[
+                            FlexText(
+                                text="超厲害燴飯",
+                                color="#666666",
+                                wrap=True
+                            )
+                        ]
+                    ),
+                    FlexBox(
+                        layout="baseline",
+                        margin="md",
+                        contents=[
+                            FlexText(
+                                text="NT$230",
+                                color="#999999",
+                                size="sm"
+                            ),
+                            FlexText(
+                                text="180",
+                                weight="bold",
+                                color="#000000"
+                            )
+                        ]
+                    )
+                ]
+            ),
+            footer=FlexBox(
+                layout="vertical",
+                contents=[
+                    FlexButton(
+                        style="primary",
+                        action={
+                            "type": "message",
+                            "label": "訂購",
+                            "text": "加入購物車"
+                        }
+                    )
+                ]
+            )
+        )
+
     ]
 
     return FlexMessage(
