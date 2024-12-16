@@ -5,7 +5,8 @@ from flask import Flask, request, abort
 import os
 
 from linebot.v3 import (
-    WebhookHandler
+    WebhookHandler,
+    URITemplateAction
 )
 from linebot.v3.exceptions import (
     InvalidSignatureError
@@ -35,7 +36,6 @@ from linebot.v3.messaging import (
     MessageAction,
     ImageCarouselTemplate,
     ImageCarouselColumn,
-    URITemplateAction,
     FlexMessage,
     FlexContainer
 )
