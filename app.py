@@ -254,28 +254,28 @@ def handle_message(event):
         elif text == '電影推薦':
             image_carousel_columns = [
                 ImageCarouselTemplate(
-                    image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/element.jpg?raw=true',
+                    image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/772A5BCB-AFA1-4FEA-8A15-46DA4F78596A.jpeg?raw=true',
                     action=URIAction(
                         label='查看詳情',
                         uri='https://www.disneyplus.com/zh-tw/movies/elemental/1B2ZQ9GF35W5'
                     )
                 ),
                 ImageCarouselTemplate(
-                    image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/emotions.jpg?raw=true',
+                    image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/A785BADF-002F-4ADA-8161-DB79EE432FE7.jpeg?raw=true',
                     action=URIAction(
                         label='查看預告',
                         uri='https://zh.wikipedia.org/zh-tw/%E8%85%A6%E7%AD%8B%E6%80%A5%E8%BD%89%E5%BD%8E2'
                     )
                 ),
                 ImageCarouselTemplate(
-                    image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/joke.jpg?raw=true',
+                    image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/67FDAE20-E024-4FBD-B8D9-7EC19677BCDF.jpeg?raw=true',
                     action=URIAction(
                         label='立即購票',
                         uri='https://www.imdb.com/title/tt0065241/'
                     )
                 ),
                 ImageCarouselTemplate(
-                    image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/sea.jpg?raw=true',
+                    image_url='https://github.com/tonywuwutony/line-bot/blob/main/static/3E174B77-D760-43F3-AA68-A2697C73AA70.jpeg?raw=true',
                     action=URIAction(
                         label='線上觀看',
                         uri='https://www.ambassador.com.tw/home/MovieContent?MID=c3f20454-6f08-4771-a9a1-cbec31812d7e&DT=2024/12/13'
