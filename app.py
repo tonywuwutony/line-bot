@@ -388,7 +388,7 @@ def handle_message(event):
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
-                    messages=[FlexMessage(content=FlexContainer.from_json(menu_string))]
+                    messages=[FlexMessage(alt_text='餐廳菜單',content=FlexContainer.from_json(menu_string))]
                 )
             )
 
