@@ -629,10 +629,10 @@ def handle_message(event):
             menu_string = {
                 "type": "carousel",
                 "contents": [
-                FlexContainer.from_json(json.dumps(menu_json)),
-                FlexContainer.from_json(json.dumps(menu1_json)),
-                FlexContainer.from_json(json.dumps(menu2_json)),
-                FlexContainer.from_json(json.dumps(menu3_json))
+                    json.loads(json.dumps(menu_json)),
+                    json.loads(json.dumps(menu1_json)),
+                    json.loads(json.dumps(menu2_json)),
+                    json.loads(json.dumps(menu3_json))
                 ]
             }
             flex_message = FlexMessage(
